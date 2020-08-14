@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import WeatherForm from "./components/weather/WeatherForm";
+import WeatherInfo from "./components/weather/WeatherInfo";
+import useFetchWeather from "./hooks/useFetchWeather";
 
-function App() {
+const App: React.FC = () => {
+  const [city, setCity] = useState<string>("Moscow");
+
+  const { weather, isLoading, error, getWeather } = useFetchWeather(city);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <h3>The Weather App</h3>
+        <WeatherForm
+            getWeather={getWeather}
+            city={city}
+            setCity={setCity}
+        />
+        {isLoading ? (
+            <p>Loading ...</p>
+        ) : (
+            <>
+              {weather && (
+                  <WeatherInfo
+                      city={weather?.name}
+                      description={weather?.weather[0].description}
+                      temperature={weather?.main.temp}
+                      icon={weather?.weather[0]?.icon}
+                  />
+              )}
+              {error && <p>{error}</p>}
+            </>
+        )}
+      </div>
   );
-}
+};
 
 export default App;
