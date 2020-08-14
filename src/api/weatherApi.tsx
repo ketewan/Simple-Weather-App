@@ -1,12 +1,11 @@
 import axios, { AxiosResponse } from "axios";
-import { OPENWEATHERMAP_API_KEY } from "../config/apikey";
 import { WeatherModel } from "../models/Weather";
 
 export const getWeather = (
     city: string,
 ): Promise<AxiosResponse<WeatherModel>> => {
     const options = {
-        appid: OPENWEATHERMAP_API_KEY,
+        appid: process.env.REACT_APP_WEATHER_API_KEY,
         units: "metric",
         lang: "ru",
     };
