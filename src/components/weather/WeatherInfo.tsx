@@ -4,6 +4,7 @@ interface WeatherInfoProps {
     city?: string;
     description?: string;
     temperature?: number;
+    feelsLike?: number;
     icon?: string;
 }
 
@@ -12,6 +13,7 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({
     description,
     temperature,
     icon,
+    feelsLike,
 }) => {
     return (
         <div>
@@ -21,6 +23,7 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({
                 alt=""
             />
             {temperature && <p>{`${Math.round(temperature)}℃`}</p>}
+            {feelsLike && <p>ощущается как: {`${Math.round(feelsLike)}℃`}</p>}
             {description && <p> {description}</p>}
         </div>
     );

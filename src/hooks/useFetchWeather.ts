@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { WeatherModel } from "../models/Weather";
 import { getWeather } from "../api/weatherApi";
 
