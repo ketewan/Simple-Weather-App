@@ -26,9 +26,10 @@ const App: React.FC = () => {
                         <>
                             <WeatherInfo
                                 city={weather.name}
-                                description={weather.weather[0]?.description}
+                                description={weather.weather && weather.weather[0]?.description}
                                 temperature={weather.main?.temp}
-                                icon={weather.weather[0]?.icon}
+                                icon={weather.weather && weather.weather[0]?.icon}
+                                feelsLike={weather.main?.feels_like}
                             />
                             <Advice weather={weather} />
                         </>

@@ -1,24 +1,24 @@
 interface Weather {
     name: string; // city name
     main: {
-        temp: number;
-        feels_like: number;
-        humidity: number;
+        temp?: number;
+        feels_like?: number;
+        humidity?: number;
     };
     weather: [
         {
-            main: string;
-            description: string;
-            icon: string;
+            main?: string;
+            description?: string;
+            icon?: string;
         },
     ];
     clouds: {
-        all: number;
+        all?: number;
     };
     wind: {
-        speed: number;
-        deg: number;
+        speed?: number;
+        deg?: number;
     };
 }
 
-export type WeatherModel = Readonly<Weather>;
+export type WeatherModel = Readonly<Partial<Weather>>;
