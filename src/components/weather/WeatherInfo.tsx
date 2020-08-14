@@ -16,12 +16,10 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({
     return (
         <div>
             <p>{city}</p>
-            <div>
-                <img
-                    src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-                    alt=""
-                />
-            </div>
+            <img
+                src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+                alt=""
+            />
             {temperature && <p>{`${Math.round(temperature)}℃`}</p>}
             {description && <p> {description}</p>}
         </div>

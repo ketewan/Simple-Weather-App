@@ -20,12 +20,13 @@ const WeatherForm: React.FC<WeatherFormProps> = ({
         >
             <input
                 type="text"
-                placeholder="city"
+                placeholder="Введите город"
                 name="city"
+                required
                 value={city}
                 onChange={event => setCity(event.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button type="submit">Поехали!</button>
         </form>
     );
 };

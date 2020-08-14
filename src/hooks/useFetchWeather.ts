@@ -3,15 +3,15 @@ import { WeatherModel } from "../models/Weather";
 import { getWeather } from "../api/weatherApi";
 
 const useFetchWeather = (initialCity: string) => {
-    const [weather, setWeather] = useState<WeatherModel | null>(null);
-    const [error, setError] = useState<string>("");
+    const [weather, setWeather] = useState<WeatherModel>();
+    const [error, setError] = useState<string>();
     const [isLoading, setIsLoading] = useState(false);
     const [city, setCity] = useState<string>(initialCity);
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-            setError("");
+            setError(undefined);
 
             try {
                 const response = await getWeather(city);
@@ -20,10 +20,10 @@ const useFetchWeather = (initialCity: string) => {
                 console.error(error.message);
                 error.response.status === 404
                     ? setError(
-                          "Ничего не найдено :(. Попробуйте ввести другой город",
+                          "Ничего не найдено :( Попробуйте ввести другой город",
                       )
                     : setError("Что-то пошло не так");
-                setWeather(null);
+                setWeather(undefined);
             }
 
             setIsLoading(false);

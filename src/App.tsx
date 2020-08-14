@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
   return (
       <div className="App">
-        <h3>The Weather App</h3>
+        <h1>The Weather App</h1>
         <WeatherForm
             getWeather={getWeather}
             city={city}
@@ -23,10 +23,10 @@ const App: React.FC = () => {
             <>
               {weather && (
                   <WeatherInfo
-                      city={weather?.name}
-                      description={weather?.weather[0].description}
-                      temperature={weather?.main.temp}
-                      icon={weather?.weather[0]?.icon}
+                      city={weather.name}
+                      description={weather.weather[0].description}
+                      temperature={weather.main.temp}
+                      icon={weather.weather[0].icon}
                   />
               )}
               {error && <p>{error}</p>}
